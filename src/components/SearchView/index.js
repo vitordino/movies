@@ -25,13 +25,14 @@ const SearchView = () => {
 		`&query=${search}`,
 	].join(''))
 
-	const [count, setCount] = useState(1)
+	const [page, setPage] = useState(1)
+	const totalPages = data?.total_pages
 
 	return(
 		<Wrapper>
 			<Searchbar
 				value={search}
-				onChange={e => {setSearch(e.target.value); setCount(1)}}
+				onChange={e => {setSearch(e.target.value); setPage(1)}}
 				style={{top: '1rem', position: 'sticky', zIndex: 1}}
 			/>
 			<Container>
@@ -39,12 +40,14 @@ const SearchView = () => {
 					<CardsByPage search={search} page={1}/>
 					{(search && !loading && !!data?.results?.length) && (
 						<Fragment>
-							{count > 1 && Array(count).fill(0).map((x, i) => i+2).map(page => (
+							{page > 1 && Array(page).fill(0).map((x, i) => i+2).map(page => (
 								<CardsByPage search={search} page={page}/>
 							))}
-							<Cell xs={6} sm={4} md={3} xg={2}>
-								<Card onClick={() => setCount(count + 1)} loadMore/>
-							</Cell>
+							{totalPages && totalPages > page && (
+								<Cell xs={6} sm={4} md={3} xg={2}>
+									<Card onClick={() => setPage(page + 1)} loadMore/>
+								</Cell>
+							)}
 						</Fragment>
 					)}
 
