@@ -29,7 +29,11 @@ const SearchView = () => {
 
 	return(
 		<Wrapper>
-			<Searchbar value={search} onChange={e => setSearch(e.target.value)} style={{top: '1rem', position: 'sticky', zIndex: 1}}/>
+			<Searchbar
+				value={search}
+				onChange={e => {setSearch(e.target.value); setCount(1)}}
+				style={{top: '1rem', position: 'sticky', zIndex: 1}}
+			/>
 			<Container>
 				<Row vertical-gutter style={{marginTop: '2rem', marginBottom: '2rem'}}>
 					<CardsByPage search={search} page={1}/>
