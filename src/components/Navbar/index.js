@@ -48,7 +48,9 @@ const Button = styled.button`
 const Navbar = () => (
 	<Container>
 		<Wrapper>
-			<Logo tabIndex={0} to='/'>🍿</Logo>
+			<Logo tabIndex={0} to='/'>
+				<span role='img' aria-label='movies logo'>🍿</span>
+			</Logo>
 			<Location>
 				{({location}) => (
 					location.pathname !== '/favorites'
