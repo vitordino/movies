@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Location, Link } from '@reach/router'
 import Container from 'components/Container'
-import { Logo, Heart } from 'components/Icon'
+import { Heart } from 'components/Icon'
 
 const Wrapper = styled.div`
 	padding: 1.5rem 0;
@@ -18,11 +18,23 @@ const linkStyle = `
 	margin: -0.5rem;
 	padding: 0.5rem;
 	border-radius: 2rem;
+	user-select: none;
 `
 
 const StyledLink = styled(Link)`
 	${linkStyle}
 	&:focus{${p => p.theme.focusShadow}}
+`
+
+const Logo = styled(StyledLink)`
+	text-align: center;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	vertical-align: 100px;
+	font-size: 1.75rem;
+	height: 3rem;
+	width: 3rem;
 `
 
 const Button = styled.button`
@@ -36,7 +48,7 @@ const Button = styled.button`
 const Navbar = () => (
 	<Container>
 		<Wrapper>
-			<StyledLink tabIndex={0} to='/'><Logo/></StyledLink>
+			<Logo tabIndex={0} to='/'>🍿</Logo>
 			<Location>
 				{({location}) => (
 					location.pathname !== '/favorites'

@@ -20,7 +20,7 @@ const getTitle = length => `${!length ? 'no favorites' : `${length} ${length > 1
 const SearchView = () => {
 	const [favoritesSet] = useFavorites()
 	const favorites = [...favoritesSet] || []
-	useEffect(() => {document.title = 'What’s in ⠿ ' + getTitle(favorites.length)}, [favorites.length])
+	useEffect(() => {document.title = 'Movies ⠿ ' + getTitle(favorites.length)}, [favorites.length])
 
 	return(
 		<Wrapper>

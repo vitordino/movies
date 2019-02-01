@@ -24,7 +24,7 @@ const Image = styled.img`
 `
 
 const SearchView = () => {
-	useEffect(() => {document.title = `What’s in`}, [])
+	useEffect(() => {document.title = `Movies`}, [])
 	const [search, setSearch] = useStorageString('')
 	const { error, loading, data } = useFetch([
 		`https://api.themoviedb.org/3/search/movie`,

@@ -1,6 +1,6 @@
 <img height="32" src="docs.png"></img>
 
-# What’s in <sub><sup><sub>react-app for movies</sub></sup></sub>
+# Movies <sub><sup><sub>react-app for movies</sub></sup></sub>
 
 [![www: online][www-badge]][www-url]
 

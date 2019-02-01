@@ -1,8 +1,9 @@
 {
-  "name": "whats-in",
+  "name": "vitordino-movies",
   "description": "react-app for movies",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "license": "MIT",
   "dependencies": {
     "@reach/router": "^1.2.1",
     "minireset.css": "^0.0.4",

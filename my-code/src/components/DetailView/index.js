@@ -59,7 +59,7 @@ const DetailView = ({movieId}) => {
 	].join(''))
 
 	useEffect(() => {
-		document.title = `What’s in ${data?.title && ` ⠿ ${data.title}`}`
+		document.title = `Movies ${data?.title && ` ⠿ ${data.title}`}`
 	}, [data])
 
 	const image = data?.poster_path || ''

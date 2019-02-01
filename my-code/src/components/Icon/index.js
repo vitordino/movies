@@ -1,4 +1,3 @@
-export Logo from './Logo'
 export Heart from './Heart'
 export Arrow from './Arrow'
 export IMDB from './IMDB'
