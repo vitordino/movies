@@ -1,8 +1,11 @@
 # Movies <sub><sup><sub>react-app for movies</sub></sup></sub>
 
-[![www: online][www-badge]][www-url]
+[![netlify status][netlify-badge]][netlify-url]
 
 **This repo contains all the code for the [movies.vitordino.com](https://movies.vitordino.com) app.**
+
+<sub>this project is built upon [significa/frontend-challenge](https://github.com/Significa/frontend-challenge/), all design credits go for them.</sub>
+
 
 <br/><br/>
 
@@ -66,14 +69,6 @@ $ PORT=9000 yarn dev
 | `node` |      `8.0.0` |
 | `yarn` |      `1.0.0` |
 
-<br/><br/>
 
----
-
-<br/><br/>
-
-<sub>this project is built upon [significa/frontend-challenge](https://github.com/Significa/frontend-challenge/), all design credits go for them.</sub>
-
-
-[www-badge]: https://img.shields.io/badge/netlify-online-brightgreen.svg
-[www-url]: https://movies.vitordino.com/
+[netlify-badge]: https://api.netlify.com/api/v1/badges/0f0c902d-c82b-4963-a525-ac595b05fef3/deploy-status
+[netlify-url]: https://app.netlify.com/sites/vitordino-movies/deploys
