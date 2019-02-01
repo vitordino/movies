@@ -1,65 +1,79 @@
-<img width="179" alt="screen shot 2018-04-11 at 14 55 21" src="https://user-images.githubusercontent.com/4838076/38634265-6545f090-3d98-11e8-8869-c5e477648fdf.png">
+# Movies <sub><sup><sub>react-app for movies</sub></sup></sub>
 
-[Significa](https://significa.pt/) is an Oporto based digital studio founded in late 2013. Despite being specialised in Interaction Design and Brand Development, we believe that good design thinking can answer almost any question and solve most problems. We aim to provide meaningful design solutions to achieve the best user engagement possible in any situation.
+[![www: online][www-badge]][www-url]
 
-## About the challenge
+**This repo contains all the code for the [movies.vitordino.com](https://movies.vitordino.com) app.**
 
-This is a pretty simple test, in which you should be able to write a React app, using the provided screens as reference. You’ll need to make requests to an API to get some JSON content, filter the data and print it on view.
+<br/><br/>
 
-You can use any boilerplate/approach you prefer, but try to keep it simple. We encourage you to use your favourite tools and packages to build a solid React application.
+## Development Quick Start
 
-### The app should be a movie search with two pages:
+> Make sure your system meets the [required dependencies and versions](#system-dependencies) before proceeding.
 
-* **Home page:** search field and a list with the results;
+> Get one [themoviedb.org](https://themoviedb.org/documentation/api) API key, and set it as a environment variable named REACT_APP_TMDB_KEY (you can use a `.env.local` file for that)
 
-  _Think about empty state, loading state and movie not found_
 
-* **Movie page:** movie details page;
+```bash
+# Install project dependencies
+$ yarn
 
-  _Think about loading state and movie not found_
+# Development server
+$ yarn dev # starts dev server
 
-The purpose of this challenge is to evaluate your HTML, CSS, Javascript and React API skills and overall approach while composing a simple web app given a set of screens and an API feed. We will also assess the HTML, CSS, and JS output.
+# Build app
+$ yarn build # Outputs to ./build directory
+$ npx serve build # Static server for the built website
+```
 
-## Getting Started
+<br/><br/>
 
-1.  Fork this repository to your personal account;
-2.  Create a branch with your name;
-3.  Solve the challenge in the best way you can;
+**Development Server Options**
 
-**Send us your code in one of two ways.**
+To change the port set the **`PORT`** environment variable:
 
-1.  Send us a PR;
-2.  Send us an email with your code in a zip to: hello@significa.pt
+```bash
+$ PORT=9000 yarn dev
+# => starts server at http://localhost:9000
+```
 
-### Tips
+<br/><br/>
 
-* Write a good README with basic information (e.g.: how to start the project and how to build it);
-* There's no screens designed for the mobile version, but if you build a responsive app it's a big plus. We would love to see your design skills as well!
-* Feel free to work and improve on the available designs. Think of them as guidelines.
-* There's a "like" button on the details page. It would be great if this information is persistent!
-* Prefer to use a css methodology, such as BEM, ITCSS, etc;
-* Asking questions is good. We will not penalize you for asking questions;
-* The API server is sometimes slow, so think about loading and empty states throughout your application;
-* We're looking for signs you understand concepts such as events, promises, and reactivity, and how those concepts are implemented in Javascript;
-* Unit testing will be greatly valued;
-* The git history will be evaluated;
-* Your code will be evaluated by: semantics, structure, legibility, size, elegance (among other factors);
+## Tech Stack
 
-### Necessary information
+#### Key Front-End Packages
 
-#### API:
+| name | license | description |
+| :-- | :-: | :-- |
+| [`react`](https://reactjs.org/) | [`MIT`](https://api.github.com/repos/facebook/react/license) | Declarative, component-based, functional aproach to user interfaces |
+| [`create-react-app` `v2`](https://github.com/facebook/create-react-app) | [`MIT`](https://api.github.com/repos/facebook/create-react-app/license) | create `react` apps with no build configuration. |
+| [`styled-components`](https://styled-components.com/) | [`MIT`](https://api.github.com/repos/styled-components/styled-components/license) | `css-in-js` library, composable styling |
+| [`@reach/router`](https://reach.tech/router) | [`MIT`](https://api.github.com/repos/reach/router/license) | Next Generation Routing for `react` |
+| [`rescripts`](https://github.com/harrysolovay/rescripts) | [`MIT`](https://api.github.com/repos/harrysolovay/rescripts/license) | Use the latest react-scripts with custom configurations for Babel, ESLint, TSLint, Webpack,... ∞ |
+| [`react-snap`](https://github.com/stereobooster/react-snap) | [`MIT`](https://api.github.com/repos/stereobooster/react-snap/license) | Zero-configuration framework-agnostic static prerendering for SPAs |
 
-We suggest using [OMDb API](http://www.omdbapi.com/), although you can use any other API you prefer
+<br/>
 
-#### Screens / Assets / Styleguide:
+<sub>This app is heavily built on react alpha features — eg.: `hooks`, `lazy` and `Suspense`.</sub>
 
-Take a look at the `/layout` folder, there you will find everything you need.
+<br/><br/>
 
-[Invision Prototype](https://invis.io/K6GW19Z3FP8#/291216728_1-Search)  
-[Styleguide](https://invis.io/5JGW1AFQHUX#/291309274_1-type)
+#### System Dependencies
 
-### Contact or doubts
+| name   | min. version |
+| :----- | -----------: |
+| `git`  |      `2.0.0` |
+| `bash` |      `3.0.0` |
+| `node` |      `8.0.0` |
+| `yarn` |      `1.0.0` |
 
-Use the [issues](https://github.com/Significa/frontend-challenge/issues) or send us an email: hello@significa.pt
+<br/><br/>
 
-_Break a leg!_
+---
+
+<br/><br/>
+
+<sub>this project is built upon [significa/frontend-challenge](https://github.com/Significa/frontend-challenge/), all design credits go for them.</sub>
+
+
+[www-badge]: https://img.shields.io/badge/netlify-online-brightgreen.svg
+[www-url]: https://movies.vitordino.com/
