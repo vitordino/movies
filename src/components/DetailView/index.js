@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { useFetch } from 'react-hooks-fetch'
 import Container from 'components/Container'
-import { Arrow, IMDB, Dead } from 'components/Icon'
+import { Arrow, IMDB } from 'components/Icon'
 import { Row, Cell } from 'components/Grid'
 import Text from 'components/Text'
 import Button from 'components/Button'
@@ -91,7 +91,7 @@ const DetailView = ({movieId}) => {
 			</Container>
 			{error && (
 				<Container style={{flex: 1}}>
-					<InfoScreen icon={<Dead size={96} style={{margin: '2rem'}}/>} title='I’m sorry Dave' description='I’m afraid i can’t do that'/>
+					<InfoScreen emoji='❌' title='I’m sorry Dave' description='I’m afraid i can’t do that'/>
 				</Container>
 			)}
 		</Wrapper>

@@ -16,9 +16,14 @@ const Wrapper = styled(Container)`
 	}
 `
 
-const InfoScreen = ({icon, title, description, noMargin, ...props}) => (
+const Emoji = styled.div`
+	font-size: 3rem;
+	margin: 0.5em;
+`
+
+const InfoScreen = ({emoji, title, description, ...props}) => (
 	<Wrapper {...props}>
-		{icon && <div style={{margin: !noMargin && '2rem'}}>{icon}</div>}
+		{emoji && <Emoji>{emoji}</Emoji>}
 		{title && <Text xs={1} md={2} weight={600} style={{margin: '1rem 0 0.5rem'}}>{title}</Text>}
 		{description && <Text color={p => p.theme.colors.lightGrey}>{description}</Text>}
 	</Wrapper>

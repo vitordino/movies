@@ -7,7 +7,6 @@ import Container from 'components/Container'
 import { Row, Cell } from 'components/Grid'
 import Card from 'components/Card'
 import InfoScreen from 'components/InfoScreen'
-import { FightClub, Dead } from 'components/Icon'
 import CardsByPage from './CardsByPage'
 
 const Wrapper = styled.div`
@@ -15,12 +14,6 @@ const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	transition: 0.2s all;
-`
-
-const Image = styled.img`
-	display: block;
-	max-width: 80%;
-	margin: 0 auto;
 `
 
 const SearchView = () => {
@@ -56,9 +49,9 @@ const SearchView = () => {
 					))}
 				</Row>
 			</Container>
-			{!search && <InfoScreen noMargin icon={<Image src='/assets/images/empty-state.png'/>} title='Don’t know what to search?' description='Here’s an offer you can’t refuse'/>}
-			{search && error && <InfoScreen icon={<Dead size={96} style={{margin: '2rem'}}/>} title='I’m sorry Dave' description='I’m afraid i can’t do that'/>}
-			{data && !data?.results?.length && <InfoScreen icon={<FightClub size={128} style={{margin: '1rem'}}/>} title='I am Jack’s complete lack of surprise' description='I think you better search something else'/>}
+			{!search && <InfoScreen emoji='☝️' title='Search for movie titles' description='use the search bar above'/>}
+			{search && error && <InfoScreen emoji='❌' title='I’m sorry Dave' description='I’m afraid i can’t do that'/>}
+			{data && !data?.results?.length && <InfoScreen emoji='😕' title={`No results found for ${search}`} description='let’s try another one'/>}
 		</Wrapper>
 	)
 }

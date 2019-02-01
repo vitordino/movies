@@ -27,7 +27,7 @@ const SearchView = () => {
 			<Container>
 				{!favorites.length ? (
 					<InfoScreen
-						icon={<HeartBreak size={96} style={{margin: '1rem'}}/>}
+						emoji={<HeartBreak size={96} style={{margin: '1rem'}}/>}
 						title='You still have no favorites'
 						description='you can add movies to your favorites clicking on the ♥ icon'
 					/>
