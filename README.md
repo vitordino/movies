@@ -6,6 +6,8 @@
 
 <sub>this project is built upon [significa/frontend-challenge](https://github.com/Significa/frontend-challenge/), all design credits go for them.</sub>
 
+<sub>This product uses the [TMDb](https://www.themoviedb.org/) API but is not endorsed or certified by TMDb.</sub>
+
 
 <br/><br/>
 
