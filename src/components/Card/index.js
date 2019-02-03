@@ -30,7 +30,12 @@ const Anchor = styled(Link)`
 	&:focus{${p => p.theme.focusShadow}}
 `
 
-const AbsoluteFill = styled.div`${fill}`
+const AbsoluteFill = styled.div`
+	${fill}
+	display: flex;
+	flex-direction: column-reverse;
+	justify-content: space-between;
+`
 
 const OverflowHidden = styled(AbsoluteFill)`
 	overflow: hidden;
@@ -43,25 +48,23 @@ const Image = styled.img`
 `
 
 const Overlay = styled.div`
-	position: relative;
 	width: 100%;
-	height: 100%;
+	margin-top: auto;
 	display: flex;
 	flex-direction: column-reverse;
 	justify-content: space-between;
-	position: relative;
-	&:before{
-		content: '';
-		opacity: 0;
-		${fill}
-		overflow: hidden;
+	background: ${p => p.theme.colors.overlay};
+	box-shadow: 0 0.25rem 2rem 0 rgba(5,10,13,0.30);
+	border-radius: 0 0 0.1875rem 0.1875rem;
+	@media (hover: hover) {
 		border-radius: 0.1875rem;
-		background: ${p => p.theme.colors.grey};
+		height: 100%;
+		background: none;
+		box-shadow: none;
+	}
+	${Wrapper}:hover &, ${Wrapper}:focus-within &{
+		background: ${p => p.theme.colors.overlay};
 		box-shadow: 0 0.25rem 2rem 0 rgba(5,10,13,0.30);
-		transition: 0.2s all;
-		${Wrapper}:hover &, ${Wrapper}:focus-within &{
-			opacity: 0.9;
-		}
 	}
 `
 
@@ -70,12 +73,18 @@ const HeartWrapper = styled.button`
 	border: none;
 	margin: 0;
 	color: currentColor;
-	position: relative;
-	margin-left: auto;
+	top: 0;
+	right: 0;
+	left: auto;
 	padding: 0.75rem;
 	cursor: pointer;
 	z-index: 1;
-	opacity: ${p => (p.isFavorite) ? 1 : 0};
+	position: absolute;
+	@media (hover: hover) {
+		margin-left: auto;
+		position: relative;
+		opacity: ${p => (p.isFavorite) ? 1 : 0};
+	}
 	${Wrapper}:hover &, ${Wrapper}:focus-within &{
 		opacity: 1;
 	}
@@ -96,11 +105,9 @@ const Info = styled.div`
 	justify-content: flex-end;
 	position: relative;
 	padding: 0.75rem;
-	opacity: 0;
 	cursor: pointer;
-	${Wrapper}:hover &, ${Wrapper}:focus-within &{
-		opacity: 1;
-	}
+	@media (hover: hover) {opacity: 0;}
+	${Wrapper}:hover &, ${Wrapper}:focus-within &{opacity: 1;}
 `
 
 const NoImage = styled.div`

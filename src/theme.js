@@ -13,6 +13,7 @@ export const colors = {
 	midGrey:   '#353F4C',
 	lightGrey: '#7A8C99',
 	white:     '#FFFFFF',
+	overlay:   '#1B2329E6', // grey + 0.9 alpha
 }
 
 export const fonts = {
