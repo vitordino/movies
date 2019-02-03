@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Fragment } from 'react'
+import React, { useEffect, Fragment } from 'react'
 import styled from 'styled-components'
 import { useFetch } from 'react-hooks-fetch'
 import { useStorageString } from 'utils/storage'
@@ -25,7 +25,8 @@ const SearchView = () => {
 		`&query=${search}`,
 	].join(''))
 
-	const [page, setPage] = useState(1)
+	const [pageString, setPage] = useStorageString('1')
+	const page = +pageString
 	const totalPages = data?.total_pages
 
 	return(
