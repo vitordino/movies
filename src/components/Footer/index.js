@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Container from 'components/Container'
+import { Github } from 'components/Icon'
 
 const Wrapper = styled.div`
 	padding: 1.5rem 0;
@@ -31,6 +32,7 @@ const Footer = () => (
 	<Container>
 		<Wrapper>
 			<Anchor href='https://significa.pt'>design: <strong>significa</strong></Anchor>
+			<Anchor href='https://github.com/vitordino/movies' style={{padding: '0.375rem'}}><Github/></Anchor>
 			<Anchor href='https://vitordino.com'>dev: <strong>vitordino</strong></Anchor>
 		</Wrapper>
 	</Container>
