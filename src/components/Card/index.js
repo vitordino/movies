@@ -162,7 +162,7 @@ const Card = ({movieId, title, year, image, loading, error, loadMore, ...props})
 				</Overlay>
 			)}
 		</AbsoluteFill>
-		{!(loading || error || loadMore) && <Anchor to={`/${movieId}`} tabIndex={0}/>}
+		{!(loading || error || loadMore) && <Anchor to={`/movies/${movieId}`} tabIndex={0}/>}
 	</Wrapper>
 )
 
