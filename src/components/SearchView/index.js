@@ -1,11 +1,9 @@
-import React, { useEffect, Fragment } from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import { useFetch } from 'react-hooks-fetch'
 import { useStorageString } from 'utils/storage'
 import Searchbar from 'components/Searchbar'
 import Container from 'components/Container'
-import { Row, Cell } from 'components/Grid'
-import Card from 'components/Card'
+import { Row } from 'components/Grid'
 import InfoScreen from 'components/InfoScreen'
 import CardsByPage from './CardsByPage'
 
@@ -38,7 +36,7 @@ const SearchView = () => {
 							search={search}
 							page={page}
 							setPage={setPage}
-							isLastPage={pagesArray.slice(-1) == page}
+							isLastPage={pagesArray.slice(-1)[0] === page}
 						/>
 					))}
 				</Row>
