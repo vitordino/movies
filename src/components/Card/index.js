@@ -16,6 +16,7 @@ const Wrapper = styled.div`
 	background: ${p => p.error ? p.theme.colors.red : p.theme.colors.grey};
 	border-radius: 0.1875rem;
 	cursor: pointer;
+	overflow: hidden;
 `
 
 const fill = `position: absolute; top: 0; bottom: 0; left: 0; right: 0;`
