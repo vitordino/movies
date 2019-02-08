@@ -30,11 +30,13 @@ const Rating = styled(Text)`
 	`}
 `
 
-const Meta = ({runtime, release_date, release_dates}) => (
+const Meta = ({year, runtime, release_date, release_dates}) => (
 	<Wrapper style={{margin: '1.5rem 0'}}>
 		<Text sm={1} color={p => p.theme.colors.lightGrey || ''}>
-			{runtime && `${runtime} min • `}
-			{release_date && `${release_date.split('-')[0]} • `}
+			{runtime && `${runtime} min`}
+			{runtime && year && ` • `}
+			{year && `${year}`}
+			{year && getRating(release_dates) && ` • `}
 		</Text>
 		{getRating(release_dates) && <Rating>{getRating(release_dates)}</Rating>}
 	</Wrapper>
