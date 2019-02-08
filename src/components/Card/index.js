@@ -120,8 +120,8 @@ const NoImage = styled.div`
 	color: ${p => p.theme.colors.midGrey};
 `
 
-const FavoriteButton = ({id}) => {
-	const [isFavorite, {toggle}] = useFavoriteState(id)
+const FavoriteButton = ({kindURL, id}) => {
+	const [isFavorite, {toggle}] = useFavoriteState(kindURL+'/'+id)
 	return (
 		// eslint-disable-next-line no-sequences
 		<HeartWrapper isFavorite={isFavorite} onClick={toggle}>
@@ -160,7 +160,7 @@ const getKindURL = input => {
 const Card = ({id, loading, error, loadMore, ...props}) => {
 
 	const kind = props?.media_type
-	const kindURL = getKindURL(props?.media_type)
+	const kindURL = props.kindURL || getKindURL(props?.media_type)
 	const title = props?.title || props?.name
 	const image = props?.poster_path || props?.profile_path
 	const year = (props?.release_date || props?.first_air_date || props?.birthday)?.split('-')[0]
@@ -192,7 +192,7 @@ const Card = ({id, loading, error, loadMore, ...props}) => {
 						)}
 						<div style={{display: 'flex', alignItems: 'center'}}>
 							<Kind style={{position: 'relative'}}>{kind}</Kind>
-							{id && <FavoriteButton id={id} />}
+							{id && <FavoriteButton kindURL={kindURL} id={id} />}
 						</div>
 					</Overlay>
 				)}

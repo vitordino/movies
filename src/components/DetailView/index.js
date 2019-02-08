@@ -81,7 +81,7 @@ const DetailView = ({id, kind: kindURL, ...props}) => {
 										{data.vote_average}/10
 									</Button>
 								)}
-								<ToggleButton id={id}/>
+								<ToggleButton kindURL={kindURL} id={id}/>
 							</div>
 							<Info {...data}/>
 						</Cell>

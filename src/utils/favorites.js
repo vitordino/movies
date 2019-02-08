@@ -11,16 +11,16 @@ const [Provider, useStorage] = createStorage(
 const useFavorites = () => {
 	const [value, setValue] = useStorage()
 
-	const add = item => value.add(+item) && setValue(new Set(value))
-	const remove = item => value.delete(+item) && setValue(new Set(value))
-	const toggle = item => value.has(+item) ? remove(+item) : add(+item)
+	const add = item => value.add(item) && setValue(new Set(value))
+	const remove = item => value.delete(item) && setValue(new Set(value))
+	const toggle = item => value.has(item) ? remove(item) : add(item)
 
 	return [value, {add, remove, toggle}]
 }
 
 const useFavoriteState = (item) => {
 	const [value, {add, remove, toggle}] = useFavorites()
-	const i = +item
+	const i = item
 
 	const actions = {
 		add: () => add(i),

@@ -43,8 +43,8 @@ const Right = styled.div`
 	padding: 0.5rem 0.5rem 0.5rem 0;
 `
 
-const Button = ({movieId}) => {
-	const [isFavorite, {toggle}] = useFavoriteState(movieId)
+const Button = ({kindURL, id}) => {
+	const [isFavorite, {toggle}] = useFavoriteState(kindURL+'/'+id)
 	return (
 		<Wrapper isFavorite={isFavorite} onClick={toggle}>
 			<Left>

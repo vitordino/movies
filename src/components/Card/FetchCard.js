@@ -12,7 +12,7 @@ const FetchCard = ({kindURL, id}) => {
 	if(loading) return <Card loading/>
 	if(error) return <Card error/>
 
-	return <Card id={id} {...data}/>
+	return <Card id={id} kindURL={kindURL} {...data}/>
 }
 
 export default FetchCard
