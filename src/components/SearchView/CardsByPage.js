@@ -4,9 +4,9 @@ import { Cell } from 'components/Grid'
 import Card from 'components/Card'
 import InfoScreen from 'components/InfoScreen'
 
-const CardsByPage = ({search, page, setPage, isLastPage}) => {
+const CardsByPage = ({kind, search, page, setPage, isLastPage}) => {
 	const { loading, data, error } = useFetch([
-		`https://api.themoviedb.org/3/search/movie`,
+		`https://api.themoviedb.org/3/search/${kind}`,
 		`?api_key=${process.env.REACT_APP_TMDB_KEY}`,
 		`&query=${search}`,
 		`&page=${page}`,
@@ -28,18 +28,12 @@ const CardsByPage = ({search, page, setPage, isLastPage}) => {
 	if(!data?.results?.length) return null
 
 	const totalPages = data?.total_pages
-
-
-	return(
+	// return <pre>{JSON.stringify(data, null, 2)}</pre>
+	return (
 		<Fragment>
-			{data?.results?.map(({id: movieId, title, poster_path, release_date}) => (
-				<Cell key={movieId} xs={6} sm={4} md={3} xg={2}>
-					<Card
-						movieId={movieId}
-						title={title}
-						image={poster_path}
-						year={release_date.split('-')[0]}
-					/>
+			{data?.results?.map(entry => (
+				<Cell key={entry.id} xs={6} sm={4} md={3} xg={2}>
+					<Card {...entry}/>
 				</Cell>
 			))}
 			{isLastPage && totalPages && totalPages > page && (

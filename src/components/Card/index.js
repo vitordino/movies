@@ -4,7 +4,7 @@ import { Link } from '@reach/router'
 import { useFavoriteState } from 'utils/favorites'
 import AspectRatio from 'components/AspectRatio'
 import Text from 'components/Text'
-import { Heart, Movie } from 'components/Icon'
+import { Heart, Movie, Person, TV } from 'components/Icon'
 
 const Wrapper = styled.div`
 	background: none;
@@ -120,8 +120,8 @@ const NoImage = styled.div`
 	color: ${p => p.theme.colors.midGrey};
 `
 
-const FavoriteButton = ({movieId}) => {
-	const [isFavorite, {toggle}] = useFavoriteState(movieId)
+const FavoriteButton = ({id}) => {
+	const [isFavorite, {toggle}] = useFavoriteState(id)
 	return (
 		// eslint-disable-next-line no-sequences
 		<HeartWrapper isFavorite={isFavorite} onClick={toggle}>
@@ -139,32 +139,69 @@ const LoadMore = styled(Text)`
 	}
 `
 
+const Kind = styled.div`
+	padding: 0.75rem;
+	font-size: 0.75rem;
+	font-weight: 500;
+	text-transform: uppercase;
+	letter-spacing: 0.025rem;
+	color: transparent;
+	${Wrapper}:hover & {
+		color: ${p => p.theme.colors.lightGrey};
+	}
+`
 
-const Card = ({movieId, title, year, image, loading, error, loadMore, ...props}) => (
-	<Wrapper error={error} {...props}>
-		<AspectRatio ratio={0.75}/>
-		<OverflowHidden>
-			{image && <Image src={`https://image.tmdb.org/t/p/w500/${image}`}/>}
-		</OverflowHidden>
-		{loadMore && (
-			<LoadMore xs={1} weight={500} color={p => p.theme.colors.midGrey}>Load<br/>More</LoadMore>
-		)}
-		<AbsoluteFill>
-			{!image && !loading && !loadMore && <NoImage><Movie/></NoImage>}
-			{!loadMore && (
-				<Overlay>
-					{title && (
-						<Info>
-							<Text xs={1} weight={500} style={{marginBottom: '0.25em'}}>{title}</Text>
-							<Text>{year}</Text>
-						</Info>
-					)}
-					{movieId && <FavoriteButton movieId={movieId} />}
-				</Overlay>
+const getKindURL = input => {
+	if(input === 'movie') return 'movies'
+	if(input === 'person') return 'people'
+	return input
+}
+
+const Card = ({id, loading, error, loadMore, ...props}) => {
+
+	const kind = props?.media_type
+	const kindURL = getKindURL(props?.media_type)
+	const title = props?.title || props?.name
+	const image = props?.poster_path || props?.profile_path
+	const year = (props?.release_date || props?.first_air_date || props?.birthday)?.split('-')[0]
+
+	return (
+		<Wrapper error={error} {...props}>
+			<AspectRatio ratio={0.75}/>
+			<OverflowHidden>
+				{image && <Image src={`https://image.tmdb.org/t/p/w500/${image}`}/>}
+			</OverflowHidden>
+			{loadMore && (
+				<LoadMore xs={1} weight={500} color={p => p.theme.colors.midGrey}>Load<br/>More</LoadMore>
 			)}
-		</AbsoluteFill>
-		{!(loading || error || loadMore) && <Anchor to={`/movies/${movieId}`} tabIndex={0}/>}
-	</Wrapper>
-)
+			<AbsoluteFill>
+				{!image && !loading && !loadMore && (
+					<NoImage>
+						{kind === 'movie' && <Movie/>}
+						{kind === 'tv' && <TV/>}
+						{kind === 'person' && <Person/>}
+					</NoImage>
+				)}
+				{!loadMore && (
+					<Overlay>
+						{title && (
+							<Info>
+								<Text xs={1} weight={500} style={{marginBottom: '0.25em'}}>{title}</Text>
+								<Text color={p => p.theme.colors.lightGrey}>{year}</Text>
+							</Info>
+						)}
+						<div style={{display: 'flex', alignItems: 'center'}}>
+							<Kind style={{position: 'relative'}}>{kind}</Kind>
+							{id && <FavoriteButton id={id} />}
+						</div>
+					</Overlay>
+				)}
+			</AbsoluteFill>
+			{!(loading || error || loadMore) && (
+				<Anchor to={`/${kindURL}/${id}`} tabIndex={0}/>
+			)}
+		</Wrapper>
+	)
+}
 
 export default Card

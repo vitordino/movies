@@ -1,11 +1,13 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { useStorageString } from 'utils/storage'
+import { getTitleFromURL, getKindByURL } from 'utils/kind'
 import Searchbar from 'components/Searchbar'
 import Container from 'components/Container'
 import { Row } from 'components/Grid'
 import InfoScreen from 'components/InfoScreen'
 import CardsByPage from './CardsByPage'
+import Info from './Info'
 
 const Wrapper = styled.div`
 	flex: 1
@@ -14,8 +16,8 @@ const Wrapper = styled.div`
 	transition: 0.2s all;
 `
 
-const SearchView = () => {
-	useEffect(() => {document.title = `Movies`}, [])
+const SearchView = ({kind: kindURL = 'multi'}) => {
+	useEffect(() => {document.title = getTitleFromURL(kindURL)}, [])
 	const [search, setSearch] = useStorageString('')
 
 	const [pageString, setPage] = useStorageString('1')
@@ -37,11 +39,14 @@ const SearchView = () => {
 							page={page}
 							setPage={setPage}
 							isLastPage={pagesArray.slice(-1)[0] === page}
+							kind={getKindByURL(kindURL)}
 						/>
 					))}
 				</Row>
 			</Container>
-			{!search && <InfoScreen emoji='☝️' title='Search for movie titles' description='use the search bar above'/>}
+			{!search && (
+				<Info emoji='☝️' kind={kindURL} description='use the search bar above'/>
+			)}
 		</Wrapper>
 	)
 }

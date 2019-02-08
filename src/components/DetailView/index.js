@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { useFetch } from 'react-hooks-fetch'
+import { getTitleFromURL, getKindByURL } from 'utils/kind'
 import Container from 'components/Container'
 import { Arrow, IMDB } from 'components/Icon'
 import { Row, Cell } from 'components/Grid'
@@ -50,19 +51,20 @@ const BackLink = styled.button`
 	}
 `
 
+const getDetailTitle = (kindURL, title) => `${getTitleFromURL(kindURL)} ${title ? ` ⠿ ${title}` : ''}`
 
-const DetailView = ({movieId}) => {
+const DetailView = ({id, kind: kindURL, ...props}) => {
 	const { error, loading, data } = useFetch([
-		`https://api.themoviedb.org/3/movie/${movieId}`,
+		`https://api.themoviedb.org/3/${getKindByURL(kindURL)}/${id}`,
 		`?api_key=${process.env.REACT_APP_TMDB_KEY}`,
-		`&append_to_response=release_dates,external_ids,credits`
+		`&append_to_response=release_dates,external_ids,credits,content_ratings`
 	].join(''))
 
-	useEffect(() => {
-		document.title = `Movies ${data?.title && ` ⠿ ${data.title}`}`
-	}, [data])
+	const title = data?.title || data?.name
+	const kind = data?.media_type
+	const image = data?.poster_path || data?.profile_path
 
-	const image = data?.poster_path || ''
+	useEffect(() => {document.title = getDetailTitle(kindURL, title)}, [data])
 
 	return(
 		<Wrapper error={error}>
@@ -72,14 +74,14 @@ const DetailView = ({movieId}) => {
 					<Row vertical-gutter style={{justifyContent: 'space-between'}}>
 						<Cell xs={12} md={6} style={{marginBottom: '1.5rem'}}>
 							<Meta {...data}/>
-							<Text weight={600} xs={2} sm={3} md={4} xg={5}>{data.title}</Text>
+							<Text weight={600} xs={2} sm={3} md={4} xg={5}>{title}</Text>
 							<div style={{display: 'flex', margin: '1rem -0.5rem'}}>
 								{!!data.vote_average && !!data.imdb_id && (
 									<Button imdb={data.imdb_id} background='#FF9F1C' logo={<IMDB color='#0A1014'/>}>
 										{data.vote_average}/10
 									</Button>
 								)}
-								<ToggleButton movieId={movieId}/>
+								<ToggleButton id={id}/>
 							</div>
 							<Info {...data}/>
 						</Cell>

@@ -11,9 +11,8 @@ const Wrapper = styled(Container)`
 	justify-content: center;
 	margin: 4rem auto;
 	text-align: center;
-	svg{
-		color: ${p => p.theme.colors.grey}
-	}
+	svg{color: ${p => p.theme.colors.grey}}
+	a{color: currentColor}
 `
 
 const Emoji = styled.div`

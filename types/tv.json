@@ -1,0 +1,20 @@
+{
+  "original_name": "Friends",
+  "id": 1668,
+  "media_type": "tv",
+  "name": "Friends",
+  "vote_count": 1429,
+  "vote_average": 7.85,
+  "poster_path": "/7buCWBTpiPrCF5Lt023dSC60rgS.jpg",
+  "first_air_date": "1994-09-22",
+  "popularity": 56.711,
+  "genre_ids": [
+    35
+  ],
+  "original_language": "en",
+  "backdrop_path": "/efiX8iir6GEBWCD0uCFIi5NAyYA.jpg",
+  "overview": "The misadventures of a group of friends as they navigate the pitfalls of work, life and love in Manhattan.",
+  "origin_country": [
+    "US"
+  ]
+}

@@ -3,7 +3,7 @@ import { Row, Cell } from 'components/Grid'
 import Section from './Section'
 
 const Info = data => {
-	const plot = data?.overview || ''
+	const description = data?.overview || data?.biography
 	const genres = data?.genres?.map(x => x.name) || []
 	const actors = data?.credits?.cast?.map(x => x.name).slice(0, 4) || []
 	const directors = data?.credits?.crew?.filter(x => x.department === 'Directing')?.map(x => x.name) || []
@@ -11,7 +11,7 @@ const Info = data => {
 	return(
 		<Row>
 			<Cell lg={10}>
-				{plot && <Section title='Plot'>{plot}</Section>}
+				{description && <Section title='Plot'>{description}</Section>}
 				<Row style={{justifyContent: 'space-between'}}>
 					{!!genres.length && (
 						<Cell>
