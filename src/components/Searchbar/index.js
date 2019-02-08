@@ -52,11 +52,11 @@ const Input = styled.input`
 	}
 `
 
-const Searchbar = ({...props}) => (
+const Searchbar = ({value, onChange, ...props}) => (
 	<Container {...props}>
 		<Wrapper>
 			<Loupe/>
-			<Input placeholder='Search movies...' {...props}/>
+			<Input placeholder='Search movies...' value={value} onChange={onChange}/>
 		</Wrapper>
 	</Container>
 )
