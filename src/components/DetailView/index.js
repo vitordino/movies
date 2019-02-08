@@ -61,7 +61,6 @@ const DetailView = ({id, kind: kindURL, ...props}) => {
 	].join(''))
 
 	const title = data?.title || data?.name
-	const kind = data?.media_type
 	const image = data?.poster_path || data?.profile_path
 
 	useEffect(() => {document.title = getDetailTitle(kindURL, title)}, [data])

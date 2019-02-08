@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { useStorageString } from 'utils/storage'
-import { getTitleFromURL, getKindByURL } from 'utils/kind'
+import { getTitleFromURL } from 'utils/kind'
 import Searchbar from 'components/Searchbar'
 import Container from 'components/Container'
 import { Row } from 'components/Grid'
-import InfoScreen from 'components/InfoScreen'
 import CardsByPage from './CardsByPage'
 import Info from './Info'
 
@@ -39,7 +38,7 @@ const SearchView = ({kind: kindURL = 'multi'}) => {
 							page={page}
 							setPage={setPage}
 							isLastPage={pagesArray.slice(-1)[0] === page}
-							kind={getKindByURL(kindURL)}
+							kindURL={kindURL}
 						/>
 					))}
 				</Row>

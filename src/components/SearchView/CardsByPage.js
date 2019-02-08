@@ -1,12 +1,13 @@
 import React, { Fragment } from 'react'
 import { useFetch } from 'react-hooks-fetch'
+import { getKindByURL } from 'utils/kind'
 import { Cell } from 'components/Grid'
 import Card from 'components/Card'
 import InfoScreen from 'components/InfoScreen'
 
-const CardsByPage = ({kind, search, page, setPage, isLastPage}) => {
+const CardsByPage = ({search, page, setPage, isLastPage, kindURL}) => {
 	const { loading, data, error } = useFetch([
-		`https://api.themoviedb.org/3/search/${kind}`,
+		`https://api.themoviedb.org/3/search/${getKindByURL(kindURL)}`,
 		`?api_key=${process.env.REACT_APP_TMDB_KEY}`,
 		`&query=${search}`,
 		`&page=${page}`,
@@ -33,7 +34,7 @@ const CardsByPage = ({kind, search, page, setPage, isLastPage}) => {
 		<Fragment>
 			{data?.results?.map(entry => (
 				<Cell key={entry.id} xs={6} sm={4} md={3} xg={2}>
-					<Card {...entry}/>
+					<Card kindURL={kindURL} {...entry}/>
 				</Cell>
 			))}
 			{isLastPage && totalPages && totalPages > page && (

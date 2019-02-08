@@ -160,7 +160,7 @@ const getKindURL = input => {
 const Card = ({id, loading, error, loadMore, ...props}) => {
 
 	const kind = props?.media_type
-	const kindURL = props.kindURL || getKindURL(props?.media_type)
+	const kindURL = getKindURL(props?.media_type) || props.kindURL
 	const title = props?.title || props?.name
 	const image = props?.poster_path || props?.profile_path
 	const year = (props?.release_date || props?.first_air_date || props?.birthday)?.split('-')[0]
