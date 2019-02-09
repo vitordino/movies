@@ -33,7 +33,9 @@ const Avatar = styled.div`
 	img{width: 100%}
 `
 
-const Main = styled.div``
+const Main = styled.div`
+	margin-right: 0.5rem;
+`
 
 const getURL = (kind, id) => {
 	if(kind === 'person') return `/movies/${id}`
