@@ -33,7 +33,7 @@ const Right = styled.div`
 const Button = ({logo, background, children, imdb}) => (
 	<Wrapper tabIndex={0} href={`https://imdb.com/title/${imdb}/`}>
 		{logo && <Left background={background}>{logo}</Left>}
-		<Right><Text weight={500}>{children}</Text></Right>
+		{children && <Right><Text weight={500}>{children}</Text></Right>}
 	</Wrapper>
 )
 
