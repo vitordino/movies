@@ -60,6 +60,8 @@ const DetailView = ({id, kind: kindURL, ...props}) => {
 		`&append_to_response=release_dates,external_ids,credits,content_ratings`
 	].join(''))
 
+	// return <pre>{JSON.stringify(data, null, 2)}</pre>
+
 	const title = data?.title || data?.name
 	const image = data?.poster_path || data?.profile_path
 
@@ -82,7 +84,7 @@ const DetailView = ({id, kind: kindURL, ...props}) => {
 								)}
 								<ToggleButton kindURL={kindURL} id={id}/>
 							</div>
-							<Info {...data}/>
+							<Info kind={getKindByURL(kindURL)} {...data}/>
 						</Cell>
 						<Cell xs={12} sm={12} md={5} lg={5}>
 							<Image alt={`poster for the movie: ${data.title}`} image={image}/>

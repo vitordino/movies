@@ -1,12 +1,21 @@
 import React from 'react'
+import { Link } from '@reach/router'
+import styled from 'styled-components'
 import { Row, Cell } from 'components/Grid'
 import Section from './Section'
+import Relation from './Relation'
 
-const Info = data => {
+const Anchor = styled(Link)`
+	color: currentColor;
+	text-decoration: none;
+	display: block;
+`
+
+const Info = ({kind, ...data}) => {
 	const description = data?.overview || data?.biography
 	const genres = data?.genres?.map(x => x.name) || []
-	const actors = data?.credits?.cast?.map(x => x.name).slice(0, 4) || []
-	const directors = data?.credits?.crew?.filter(x => x.department === 'Directing')?.map(x => x.name) || []
+	const actors = data?.credits?.cast?.slice(0, 4) || []
+	const directors = data?.credits?.crew?.filter(x => x.department === 'Directing') || []
 
 	return(
 		<Row>
@@ -22,15 +31,15 @@ const Info = data => {
 					)}
 					{!!actors.length && (
 						<Cell>
-							<Section title='Actors'>
-								{actors.map(actor => <div key={actor}>{actor}</div>)}
+							<Section title={kind === 'person' ? 'Acted on' : 'Actors'}>
+								{actors.map(actor => <Relation key={actor.id} kind={kind} {...actor}/>)}
 							</Section>
 						</Cell>
 					)}
 					{!!directors.length && (
 						<Cell>
-							<Section title='Directors'>
-								{directors.map(director => <div key={director}>{director}</div>)}
+							<Section title={kind === 'person' ? 'Directed' : 'Directors'}>
+								{directors.map(director => <Relation key={director.id} {...director}/>)}
 							</Section>
 						</Cell>
 					)}
