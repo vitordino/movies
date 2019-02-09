@@ -12,6 +12,9 @@ const Wrapper = styled(AspectRatio)`
 	background-color: ${p => p.theme.colors.grey};
 	img{
 		display: block;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
 	}
 `
 
