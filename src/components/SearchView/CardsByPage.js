@@ -5,15 +5,26 @@ import { Cell } from 'components/Grid'
 import Card from 'components/Card'
 import InfoScreen from 'components/InfoScreen'
 
-const CardsByPage = ({search, page, setPage, isLastPage, kindURL}) => {
-	const { loading, data, error } = useFetch([
-		`https://api.themoviedb.org/3/search/${getKindByURL(kindURL)}`,
-		`?api_key=${process.env.REACT_APP_TMDB_KEY}`,
+const getDataURL = (kindURL, search, page) => {
+	const base = 'https://api.themoviedb.org/3'
+	const api = process.env.REACT_APP_TMDB_KEY
+	if(kindURL == 'featured') return ([
+		`${base}/discover/movie`,
+		`?api_key=${api}`,
+		`&page=${page}`
+	])
+	return ([
+		`${base}/search/${getKindByURL(kindURL)}`,
+		`?api_key=${api}`,
 		`&query=${search}`,
 		`&page=${page}`,
-	].join(''))
+	])
+}
 
-	if(error) return (
+const CardsByPage = ({search, page, setPage, isLastPage, kindURL}) => {
+	const { loading, data, error } = useFetch(getDataURL(kindURL, search, page).join(''))
+
+	if(error && search) return (
 		<Cell xs={12}><InfoScreen emoji='❌' title='I’m sorry Dave' description='I’m afraid i can’t do that'/></Cell>
 	)
 
@@ -34,7 +45,7 @@ const CardsByPage = ({search, page, setPage, isLastPage, kindURL}) => {
 		<Fragment>
 			{data?.results?.map(entry => (
 				<Cell key={entry.id} xs={6} sm={4} md={3} xg={2}>
-					<Card kindURL={kindURL} {...entry}/>
+					<Card kindURL={kindURL === 'featured' ? 'movies' : kindURL} {...entry}/>
 				</Cell>
 			))}
 			{isLastPage && totalPages && totalPages > page && (

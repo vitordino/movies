@@ -16,6 +16,7 @@ const App = () => (
 					<Suspense fallback={<Loader/>}>
 						<Router location={location}>
 							<SearchView path='/'/>
+							<SearchView isSearchable={false} path='/featured' kind='featured'/>
 							<FavoritesView path='/favorites'/>
 							<SearchView path=':kind'/>
 							<DetailView path=':kind/:id'/>

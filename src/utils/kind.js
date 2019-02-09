@@ -2,7 +2,8 @@ export const getTitleFromURL = kind => {
 	if(kind === 'multi') return 'Home'
 	if(kind === 'movies') return 'Movies'
 	if(kind === 'tv') return 'TV'
-	if(kind === 'people') return 'Peole'
+	if(kind === 'people') return 'People'
+	if(kind === 'featured') return 'Featured'
 	return 'Error'
 }
 

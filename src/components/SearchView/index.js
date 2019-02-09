@@ -4,6 +4,7 @@ import { useStorageString } from 'utils/storage'
 import { getTitleFromURL } from 'utils/kind'
 import Searchbar from 'components/Searchbar'
 import Container from 'components/Container'
+import Text from 'components/Text'
 import { Row } from 'components/Grid'
 import CardsByPage from './CardsByPage'
 import Info from './Info'
@@ -15,7 +16,7 @@ const Wrapper = styled.div`
 	transition: 0.2s all;
 `
 
-const SearchView = ({kind: kindURL = 'multi'}) => {
+const SearchView = ({isSearchable = true, kind: kindURL = 'multi'}) => {
 	useEffect(() => {document.title = getTitleFromURL(kindURL)}, [])
 	const [search, setSearch] = useStorageString('')
 
@@ -25,14 +26,17 @@ const SearchView = ({kind: kindURL = 'multi'}) => {
 
 	return(
 		<Wrapper>
-			<Searchbar
-				value={search}
-				onChange={e => {setSearch(e.target.value); setPage(1)}}
-				style={{top: '1rem', position: 'sticky', zIndex: 1}}
-			/>
+			{isSearchable && (
+				<Searchbar
+					value={search}
+					onChange={e => {setSearch(e.target.value); setPage(1)}}
+					style={{top: '1rem', position: 'sticky', zIndex: 1}}
+				/>
+			)}
 			<Container>
+				{(kindURL === 'featured') && <Text weight={600} xs={2} sm={3} md={4} xg={5}>Featured movies</Text>}
 				<Row vertical-gutter style={{marginTop: '2rem', marginBottom: '2rem'}}>
-					{!!search && pagesArray.map(page => (
+					{(!!search && kindURL || 'featured') && pagesArray.map(page => (
 						<CardsByPage
 							search={search}
 							page={page}
@@ -43,7 +47,7 @@ const SearchView = ({kind: kindURL = 'multi'}) => {
 					))}
 				</Row>
 			</Container>
-			{!search && (
+			{(!search && kindURL !== 'featured') && (
 				<Info emoji='☝️' kind={kindURL} description='use the search bar above'/>
 			)}
 		</Wrapper>

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Location, Link } from '@reach/router'
 import Container from 'components/Container'
-import { Heart } from 'components/Icon'
+import { Heart, Fire } from 'components/Icon'
 import Item from './Item'
 
 const Wrapper = styled.div`
@@ -30,6 +30,11 @@ const Logo = styled(Link)`
 	&:focus{${p => p.theme.focusShadow}}
 `
 
+const Flex = styled.div`
+	display: flex;
+	align-items: center;
+`
+
 const Navbar = () => (
 	<Container>
 		<Wrapper>
@@ -38,9 +43,14 @@ const Navbar = () => (
 			</Logo>
 			<Location>
 				{({location: {pathname}}) => (
-					<Item to='/favorites' active={pathname === '/favorites'}>
-						<Heart filled={pathname === '/favorites'} style={{transform: 'translateY(1px)'}}/>
-					</Item>
+					<Flex>
+						<Item to='/featured' active={pathname === '/featured'}>
+							<Fire filled={pathname === '/featured'} style={{transform: 'translateY(1px)'}}/>
+						</Item>
+						<Item to='/favorites' active={pathname === '/favorites'}>
+							<Heart filled={pathname === '/favorites'} style={{transform: 'translateY(1px)'}}/>
+						</Item>
+					</Flex>
 				)}
 			</Location>
 		</Wrapper>
