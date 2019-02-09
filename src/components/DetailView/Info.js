@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import { Link } from '@reach/router'
 import styled from 'styled-components'
 import { Row, Cell } from 'components/Grid'
@@ -25,48 +25,42 @@ const Info = ({kind, ...data}) => {
 	const totalDirectors = data?.credits?.crew?.filter(x => x.department === 'Directing')?.length || 0
 
 	return(
-		<Row>
-			<Cell lg={10}>
-				{description && <Section title='Plot'>{description}</Section>}
-				<Row style={{justifyContent: 'space-between'}}>
+		<Fragment>
+			{description && <Section title='Plot'>{description}</Section>}
+			<Row style={{justifyContent: 'space-between'}}>
+				{!!totalActors && (
+					<Cell xs={12} md={6}>
+						<Section title={kind === 'person' ? 'Acted on' : 'Actors'}>
+							{actors.map(actor => <Relation key={actor.id} kind={kind} {...actor}/>)}
+							{totalActors > 4 && (
+								<Toggle
+									more={!!sliceActors}
+									onClick={() => setSliceActors(!!sliceActors ? undefined : 4)}
+								/>
+							)}
+						</Section>
+					</Cell>
+				)}
+				<Cell xs={12} md={6}>
 					{!!genres.length && (
-						<Cell>
-							<Section title='Genres'>
-								{genres.map(genre => <div key={genre}>{genre}</div>)}
-							</Section>
-						</Cell>
-					)}
-					{!!totalActors && (
-						<Cell>
-							<Section title={kind === 'person' ? 'Acted on' : 'Actors'}>
-								{actors.map(actor => (
-									<Relation key={actor.id} kind={kind} {...actor}/>
-								))}
-								{totalActors > 4 && (
-									<Toggle
-										more={!!sliceActors}
-										onClick={() => setSliceActors(!!sliceActors ? undefined : 4)}
-									/>
-								)}
-							</Section>
-						</Cell>
+						<Section title='Genres'>
+							{genres.map(genre => <div key={genre}>{genre}</div>)}
+						</Section>
 					)}
 					{!!totalDirectors && (
-						<Cell>
-							<Section title={kind === 'person' ? 'Directed' : 'Directors'}>
-								{directors.map(director => <Relation key={director.id} {...director}/>)}
-								{totalDirectors > 4 && (
-									<Toggle
-										more={!!sliceDirectors}
-										onClick={() => setSliceDirectors(!!sliceDirectors ? undefined : 4)}
-									/>
-								)}
-							</Section>
-						</Cell>
+						<Section title={kind === 'person' ? 'Directed' : 'Directors'}>
+							{directors.map(director => <Relation key={director.id} {...director}/>)}
+							{totalDirectors > 4 && (
+								<Toggle
+									more={!!sliceDirectors}
+									onClick={() => setSliceDirectors(!!sliceDirectors ? undefined : 4)}
+								/>
+							)}
+						</Section>
 					)}
-				</Row>
-			</Cell>
-		</Row>
+				</Cell>
+			</Row>
+		</Fragment>
 	)
 }
 
