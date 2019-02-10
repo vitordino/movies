@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Container from 'components/Container'
 import Text from 'components/Text'
+import Link from 'components/Link'
 
 const Wrapper = styled(Container)`
 	flex: 1;
@@ -12,15 +13,6 @@ const Wrapper = styled(Container)`
 	margin: 4rem auto;
 	text-align: center;
 	svg{color: ${p => p.theme.colors.grey}}
-	a{
-		border-radius: 0.125rem;
-		color: currentColor;
-		outline: none;
-		&:focus, &:hover{
-			color: ${p => p.theme.colors.yellow};
-			text-decoration: none;
-		}
-	}
 `
 
 const Emoji = styled.div`
