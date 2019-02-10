@@ -30,7 +30,7 @@ const SearchView = ({isSearchable = true, kind: kindURL = 'multi'}) => {
 				<Searchbar
 					value={search}
 					onChange={e => {setSearch(e.target.value); setPage(1)}}
-					style={{top: '1rem', position: 'sticky', zIndex: 1}}
+					style={{top: '1rem', position: 'sticky', zIndex: 2}}
 				/>
 			)}
 			<Container>

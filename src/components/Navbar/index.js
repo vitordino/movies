@@ -5,8 +5,16 @@ import Container from 'components/Container'
 import { Heart, Fire } from 'components/Icon'
 import Item from './Item'
 
+const StickyContainer = styled(Container)`
+	top: 0;
+	position: sticky;
+	z-index: 2;
+	background: ${p => p.theme.colors.dark};
+	margin: 0 auto 1rem;
+`
+
 const Wrapper = styled.div`
-	padding: 1.5rem 0;
+	padding: 1.5rem 0 0.5rem;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
@@ -36,7 +44,7 @@ const Flex = styled.div`
 `
 
 const Navbar = () => (
-	<Container>
+	<StickyContainer>
 		<Wrapper>
 			<Logo tabIndex={0} to='/'>
 				<span role='img' aria-label='movies logo'>🍿</span>
@@ -54,7 +62,7 @@ const Navbar = () => (
 				)}
 			</Location>
 		</Wrapper>
-	</Container>
+	</StickyContainer>
 )
 
 export default Navbar
