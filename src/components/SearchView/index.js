@@ -16,6 +16,7 @@ const Wrapper = styled.div`
 	transition: 0.2s all;
 `
 
+/* eslint-disable no-mixed-operators */
 const SearchView = ({isSearchable = true, kind: kindURL = 'multi'}) => {
 	useEffect(() => {document.title = getTitleFromURL(kindURL)}, [])
 	const [search, setSearch] = useStorageString('')
@@ -53,5 +54,6 @@ const SearchView = ({isSearchable = true, kind: kindURL = 'multi'}) => {
 		</Wrapper>
 	)
 }
+/* eslint-enable no-mixed-operators */
 
 export default SearchView

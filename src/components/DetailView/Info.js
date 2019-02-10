@@ -1,17 +1,8 @@
 import React, { Fragment, useState } from 'react'
-import { Link } from '@reach/router'
-import styled from 'styled-components'
 import { Row, Cell } from 'components/Grid'
 import Section from './Section'
 import Relation from './Relation'
 import Toggle from './Toggle'
-
-const Anchor = styled(Link)`
-	color: currentColor;
-	text-decoration: none;
-	display: block;
-`
-
 
 const Info = ({kind, ...data}) => {
 	const [sliceActors, setSliceActors] = useState(4)

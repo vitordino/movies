@@ -50,7 +50,7 @@ const Relation = ({id, kind, name, poster_path, profile_path, character, title, 
 		<Wrapper to={url} {...props}>
 			<Avatar>
 				{image
-					? <img src={`https://image.tmdb.org/t/p/w45/${image}`}/>
+					? <img alt={main} src={`https://image.tmdb.org/t/p/w45/${image}`}/>
 					: <div>{(main || ' ')[0]}</div>
 				}
 			</Avatar>

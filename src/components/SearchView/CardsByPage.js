@@ -8,7 +8,7 @@ import InfoScreen from 'components/InfoScreen'
 const getDataURL = (kindURL, search, page) => {
 	const base = 'https://api.themoviedb.org/3'
 	const api = process.env.REACT_APP_TMDB_KEY
-	if(kindURL == 'featured') return ([
+	if(kindURL === 'featured') return ([
 		`${base}/discover/movie`,
 		`?api_key=${api}`,
 		`&page=${page}`
@@ -32,7 +32,6 @@ const CardsByPage = ({search, page, setPage, isLastPage, kindURL}) => {
 		<Cell key={i} xs={6} sm={4} md={3} xg={2}><Card loading/></Cell>
 	)))
 
-
 	if(data && !data?.results?.length) return (
 		<Cell xs={12}><InfoScreen emoji='😕' title={`No results found for ${search}`} description='let’s try another one'/></Cell>
 	)
@@ -40,7 +39,6 @@ const CardsByPage = ({search, page, setPage, isLastPage, kindURL}) => {
 	if(!data?.results?.length) return null
 
 	const totalPages = data?.total_pages
-	// return <pre>{JSON.stringify(data, null, 2)}</pre>
 	return (
 		<Fragment>
 			{data?.results?.map(entry => (
