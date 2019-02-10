@@ -25,20 +25,17 @@ const Wrapper = styled.div`
 const BackLink = styled.button`
 	background: ${p => p.theme.colors.dark};
 	border: none;
-	display: block;
+	display: inline-block;
 	appearance: none;
-	${'' /* min-width: 100%; */}
-	width: calc(100% + 0.5rem);
 	color: ${p => p.theme.colors.lightGrey};
 	cursor: pointer;
 	border-radius: 0.25rem;
 	margin: 0 -0.5rem;
-	padding: 0.75rem 0 0.75rem 0.5rem;
+	padding: 0.75rem 1rem 0.75rem 0.5rem;
 	position: sticky;
-	top: 0;
-	&:hover{
-		color: ${p => p.theme.colors.white};
-	}
+	top: 0.5rem;
+	z-index: 2;
+	&:hover{color: ${p => p.theme.colors.white}}
 	&:focus{box-shadow: inset 0 0 0 0.125rem ${p => p.theme.colors.yellow}}
 	&:before{
 		content: '';
@@ -68,10 +65,10 @@ const DetailView = ({id, kind: kindURL, ...props}) => {
 	return(
 		<Wrapper error={error}>
 			<Container>
-				<BackLink onClick={() => window.history.back()}><Arrow/></BackLink>
 				{!loading && data && (
 					<Row vertical-gutter style={{justifyContent: 'space-between'}}>
 						<Cell xs={12} md={6} style={{marginBottom: '1.5rem'}}>
+							<BackLink onClick={() => window.history.back()}><Arrow/></BackLink>
 							<Meta {...data}/>
 							<Text weight={600} xs={2} sm={3} md={4} xg={5}>{title}</Text>
 							<div style={{display: 'flex', margin: '1rem -0.5rem'}}>
