@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Location, Link } from '@reach/router'
+import { Location } from '@reach/router'
+import Link from 'components/Link'
 import Container from 'components/Container'
 import { Heart, Fire } from 'components/Icon'
 import Item from './Item'

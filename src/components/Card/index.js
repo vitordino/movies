@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from '@reach/router'
 import { useFavoriteState } from 'utils/favorites'
+import Link from 'components/Link'
 import AspectRatio from 'components/AspectRatio'
 import Text from 'components/Text'
 import { Heart, Movie, Person, TV } from 'components/Icon'

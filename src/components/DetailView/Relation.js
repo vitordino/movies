@@ -1,6 +1,6 @@
 import React from 'react'
-import { Link } from '@reach/router'
 import styled from 'styled-components'
+import Link from 'components/Link'
 
 const Wrapper = styled(Link)`
 	color: currentColor;

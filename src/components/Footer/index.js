@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Container from 'components/Container'
+import Link from 'components/Link'
 import { Github } from 'components/Icon'
 
 const Wrapper = styled.div`
@@ -11,7 +12,7 @@ const Wrapper = styled.div`
 	justify-content: space-between;
 `
 
-const Anchor = styled.a`
+const Anchor = styled(Link)`
 	display: block;
 	text-decoration: none;
 	color: currentColor;
@@ -31,9 +32,9 @@ const Anchor = styled.a`
 const Footer = () => (
 	<Container>
 		<Wrapper>
-			<Anchor href='https://significa.pt'>design: <strong>significa</strong></Anchor>
-			<Anchor href='https://github.com/vitordino/movies' style={{padding: '0.375rem'}}><Github/></Anchor>
-			<Anchor href='https://vitordino.com'>dev: <strong>vitordino</strong></Anchor>
+			<Anchor to='https://significa.pt'>design: <strong>significa</strong></Anchor>
+			<Anchor to='https://github.com/vitordino/movies' style={{padding: '0.375rem'}}><Github/></Anchor>
+			<Anchor to='https://vitordino.com'>dev: <strong>vitordino</strong></Anchor>
 		</Wrapper>
 	</Container>
 )
