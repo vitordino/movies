@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import Container from 'components/Container'
 import Text from 'components/Text'
-import Link from 'components/Link'
 
 const Wrapper = styled(Container)`
 	flex: 1;
