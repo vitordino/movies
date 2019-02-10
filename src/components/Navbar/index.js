@@ -11,11 +11,11 @@ const StickyContainer = styled(Container)`
 	position: sticky;
 	z-index: 2;
 	background: ${p => p.theme.colors.dark};
-	margin: 0 auto 1rem;
+	margin: 0.5rem auto;
 `
 
 const Wrapper = styled.div`
-	padding: 1.5rem 0 0.5rem;
+	padding: 0.75rem 0 0.75rem;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;

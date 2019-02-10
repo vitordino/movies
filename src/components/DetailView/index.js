@@ -33,7 +33,7 @@ const BackLink = styled.button`
 	margin: 0 -0.5rem;
 	padding: 0.75rem 1rem 0.75rem 0.5rem;
 	position: sticky;
-	top: 0.5rem;
+	top: 0.25rem;
 	z-index: 2;
 	&:hover{color: ${p => p.theme.colors.white}}
 	&:focus{box-shadow: inset 0 0 0 0.125rem ${p => p.theme.colors.yellow}}

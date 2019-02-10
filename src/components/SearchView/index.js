@@ -31,12 +31,12 @@ const SearchView = ({isSearchable = true, kind: kindURL = 'multi'}) => {
 				<Searchbar
 					value={search}
 					onChange={e => {setSearch(e.target.value); setPage(1)}}
-					style={{top: '1rem', position: 'sticky', zIndex: 2}}
+					style={{top: '1rem', position: 'sticky', zIndex: 3}}
 				/>
 			)}
 			<Container>
 				{(kindURL === 'featured') && <Text weight={600} xs={2} sm={3} md={4} xg={5}>Featured movies</Text>}
-				<Row vertical-gutter style={{marginTop: '2rem', marginBottom: '2rem'}}>
+				<Row vertical-gutter style={{marginTop: '2rem', marginBottom: '2rem', position: 'relative', zIndex: kindURL !== 'featured' && 2}}>
 					{(!!search && kindURL || 'featured') && pagesArray.map(page => (
 						<CardsByPage
 							search={search}
