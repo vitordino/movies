@@ -12,7 +12,15 @@ const Wrapper = styled(Container)`
 	margin: 4rem auto;
 	text-align: center;
 	svg{color: ${p => p.theme.colors.grey}}
-	a{color: currentColor}
+	a{
+		border-radius: 0.125rem;
+		color: currentColor;
+		outline: none;
+		&:focus{
+			color: ${p => p.theme.colors.yellow};
+			text-decoration: none;
+		}
+	}
 `
 
 const Emoji = styled.div`
