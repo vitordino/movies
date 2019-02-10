@@ -16,7 +16,6 @@ const Wrapper = styled.div`
 	background: ${p => p.error ? p.theme.colors.red : p.theme.colors.grey};
 	border-radius: 0.1875rem;
 	cursor: pointer;
-	overflow: hidden;
 `
 
 const fill = `position: absolute; top: 0; bottom: 0; left: 0; right: 0;`
@@ -27,6 +26,7 @@ const Anchor = styled(Link)`
 	color: currentColor;
 	display: block;
 	border-radius: 0.1875rem;
+	z-index: 1;
 	${fill}
 	&:focus{${p => p.theme.focusShadow}}
 `
@@ -107,6 +107,7 @@ const Info = styled.div`
 	position: relative;
 	padding: 0.75rem;
 	cursor: pointer;
+	overflow: hidden;
 	@media (hover: hover) {opacity: 0;}
 	${Wrapper}:hover &, ${Wrapper}:focus-within &{opacity: 1;}
 `
@@ -168,6 +169,7 @@ const Card = ({id, loading, error, loadMore, ...props}) => {
 	return (
 		<Wrapper error={error} {...props}>
 			<AspectRatio ratio={0.75}/>
+			{!(loading || error || loadMore) && <Anchor to={`/${kindURL}/${id}`} tabIndex={0}/>}
 			<OverflowHidden>
 				{image && <Image src={`https://image.tmdb.org/t/p/w500/${image}`}/>}
 			</OverflowHidden>
@@ -197,9 +199,6 @@ const Card = ({id, loading, error, loadMore, ...props}) => {
 					</Overlay>
 				)}
 			</AbsoluteFill>
-			{!(loading || error || loadMore) && (
-				<Anchor to={`/${kindURL}/${id}`} tabIndex={0}/>
-			)}
 		</Wrapper>
 	)
 }
