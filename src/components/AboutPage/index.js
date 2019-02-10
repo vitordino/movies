@@ -32,7 +32,7 @@ const AboutPage = () => {
 					<Cell xs={12} md={7} lg={6}>
 
 						<Text xs={0} sm={1} style={{margin: '1em 0'}}>
-							This app was done for educational porpuses, the source code can
+							This app was done for educational purposes, the source code can
 							be found on the{' '}
 							<Anchor to='https://github.com/vitordino/movies'>
 								vitordino/movies
