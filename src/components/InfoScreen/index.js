@@ -16,7 +16,7 @@ const Wrapper = styled(Container)`
 		border-radius: 0.125rem;
 		color: currentColor;
 		outline: none;
-		&:focus{
+		&:focus, &:hover{
 			color: ${p => p.theme.colors.yellow};
 			text-decoration: none;
 		}

@@ -6,6 +6,7 @@ import Loader from 'components/Loader'
 const SearchView = lazy(() => import('components/SearchView'))
 const FavoritesView = lazy(() => import('components/FavoritesView'))
 const DetailView = lazy(() => import('components/DetailView'))
+const AboutPage = lazy(() => import('components/AboutPage'))
 
 const App = () => (
 	<Fragment>
@@ -18,6 +19,7 @@ const App = () => (
 							<SearchView path='/'/>
 							<SearchView isSearchable={false} path='/featured' kind='featured'/>
 							<FavoritesView path='/favorites'/>
+							<AboutPage path='/about'/>
 							<SearchView path=':kind'/>
 							<DetailView path=':kind/:id'/>
 						</Router>

@@ -19,7 +19,7 @@ const Anchor = styled(Link)`
 	margin: -0.5rem;
 	padding: 0.5rem;
 	border-radius: 0.125rem;
-	font-weight: 300;
+	font-weight: 500;
 	color: ${p => p.theme.colors.grey};
 	&:hover, &:focus {color: ${p => p.theme.colors.lightGrey}}
 	&:focus{${p => p.theme.focusShadow}}
@@ -32,9 +32,9 @@ const Anchor = styled(Link)`
 const Footer = () => (
 	<Container>
 		<Wrapper>
-			<Anchor to='https://significa.pt'>design: <strong>significa</strong></Anchor>
+			<Anchor to='/about'>about</Anchor>
 			<Anchor to='https://github.com/vitordino/movies' style={{padding: '0.375rem'}}><Github/></Anchor>
-			<Anchor to='https://vitordino.com'>dev: <strong>vitordino</strong></Anchor>
+			<Anchor to='https://vitordino.com'>vitordino</Anchor>
 		</Wrapper>
 	</Container>
 )
