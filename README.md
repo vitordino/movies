@@ -58,7 +58,7 @@ $ PORT=9000 yarn dev
 
 <br/>
 
-<sub>This app is heavily built on react alpha features — eg.: `hooks`, `lazy` and `Suspense`.</sub>
+<sub>This app is heavily built on react new features — eg.: `hooks`, `lazy` and `Suspense`.</sub>
 
 <br/><br/>
 
