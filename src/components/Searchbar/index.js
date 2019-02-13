@@ -56,7 +56,7 @@ const Searchbar = ({value, onChange, ...props}) => (
 	<Container {...props}>
 		<Wrapper>
 			<Loupe/>
-			<Input placeholder='Search movies...' value={value} onChange={onChange}/>
+			<Input placeholder='Search movies...' autoFocus={true} value={value} onChange={onChange}/>
 		</Wrapper>
 	</Container>
 )
