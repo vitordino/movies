@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { useFetch } from 'react-hooks-fetch'
 import { getTitleFromURL, getKindByURL } from 'utils/kind'
 import Container from 'components/Container'
+import Loader from 'components/Loader'
 import { Arrow, IMDB } from 'components/Icon'
 import { Row, Cell } from 'components/Grid'
 import Text from 'components/Text'
@@ -67,6 +68,7 @@ const DetailView = ({id, kindURL, ...props}) => {
 	return(
 		<Wrapper error={error}>
 			<Container>
+				{loading && <Loader/>}
 				{!loading && data && (
 					<Row vertical-gutter style={{justifyContent: 'space-between'}}>
 						<Cell xs={12} md={6} style={{marginBottom: '1.5rem'}}>
