@@ -12,20 +12,16 @@ const App = () => (
 	<Fragment>
 		<Navbar/>
 		<div style={{flex: 1}}>
-			<Location>
-				{({location}) => (
-					<Suspense fallback={<Loader/>}>
-						<Router location={location}>
-							<SearchView path='/'/>
-							<SearchView isSearchable={false} path='/featured' kindURL='featured'/>
-							<FavoritesView path='/favorites'/>
-							<AboutPage path='/about'/>
-							<SearchView path=':kindURL'/>
-							<DetailView path=':kindURL/:id'/>
-						</Router>
-					</Suspense>
-				)}
-			</Location>
+			<Suspense fallback={<Loader/>}>
+				<Router>
+					<SearchView path='/'/>
+					<SearchView isSearchable={false} path='/featured' kindURL='featured'/>
+					<FavoritesView path='/favorites'/>
+					<AboutPage path='/about'/>
+					<SearchView path=':kindURL'/>
+					<DetailView path=':kindURL/:id'/>
+				</Router>
+			</Suspense>
 		</div>
 		<Footer/>
 	</Fragment>
