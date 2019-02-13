@@ -22,7 +22,7 @@ const Info = ({kind, ...data}) => {
 				{!!totalActors && (
 					<Cell xs={12} md={6}>
 						<Section title={kind === 'person' ? 'Acted on' : 'Actors'}>
-							{actors.map(actor => <Relation key={actor.id} kind={kind} {...actor}/>)}
+							{actors.map(actor => <Relation key={actor?.id} kind={kind} {...actor}/>)}
 							{totalActors > 4 && (
 								<Toggle
 									more={!!sliceActors}

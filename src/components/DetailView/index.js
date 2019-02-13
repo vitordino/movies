@@ -50,7 +50,7 @@ const BackLink = styled.button`
 
 const getDetailTitle = (kindURL, title) => `${getTitleFromURL(kindURL)} ${title ? ` ⠿ ${title}` : ''}`
 
-const DetailView = ({id, kind: kindURL, ...props}) => {
+const DetailView = ({id, kindURL, ...props}) => {
 	const { error, loading, data } = useFetch([
 		`https://api.themoviedb.org/3/${getKindByURL(kindURL)}/${id}`,
 		`?api_key=${process.env.REACT_APP_TMDB_KEY}`,
@@ -59,6 +59,8 @@ const DetailView = ({id, kind: kindURL, ...props}) => {
 
 	const title = data?.title || data?.name
 	const image = data?.poster_path || data?.profile_path
+	const imdb = data?.imdb_id || data?.external_ids?.imdb_id
+	const score = data?.vote_average
 
 	useEffect(() => {document.title = getDetailTitle(kindURL, title)}, [data])
 
@@ -72,9 +74,9 @@ const DetailView = ({id, kind: kindURL, ...props}) => {
 							<Meta {...data}/>
 							<Text weight={600} xs={2} sm={3} md={4} xg={5}>{title}</Text>
 							<div style={{display: 'flex', margin: '1rem -0.5rem'}}>
-								{!!data.imdb_id && (
-									<Button imdb={data.imdb_id} background='#FF9F1C' logo={<IMDB color='#0A1014'/>}>
-										{data.vote_average && `${data.vote_average}/10`}
+								{!!imdb && (
+									<Button imdb={imdb} background='#FF9F1C' logo={<IMDB color='#0A1014'/>}>
+										{!!score && `${score}/10`}
 									</Button>
 								)}
 								<ToggleButton kindURL={kindURL} id={id}/>
@@ -82,7 +84,7 @@ const DetailView = ({id, kind: kindURL, ...props}) => {
 							<Info kind={getKindByURL(kindURL)} {...data}/>
 						</Cell>
 						<Cell xs={12} sm={12} md={5} lg={5}>
-							<Image alt={`poster for the movie: ${data.title}`} image={image}/>
+							<Image alt={`poster for: ${title}`} image={image}/>
 						</Cell>
 					</Row>
 				)}

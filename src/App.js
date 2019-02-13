@@ -17,11 +17,11 @@ const App = () => (
 					<Suspense fallback={<Loader/>}>
 						<Router location={location}>
 							<SearchView path='/'/>
-							<SearchView isSearchable={false} path='/featured' kind='featured'/>
+							<SearchView isSearchable={false} path='/featured' kindURL='featured'/>
 							<FavoritesView path='/favorites'/>
 							<AboutPage path='/about'/>
-							<SearchView path=':kind'/>
-							<DetailView path=':kind/:id'/>
+							<SearchView path=':kindURL'/>
+							<DetailView path=':kindURL/:id'/>
 						</Router>
 					</Suspense>
 				)}

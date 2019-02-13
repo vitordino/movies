@@ -17,7 +17,7 @@ const Wrapper = styled.div`
 `
 
 /* eslint-disable no-mixed-operators */
-const SearchView = ({isSearchable = true, kind: kindURL = 'multi'}) => {
+const SearchView = ({isSearchable = true, kindURL = 'multi'}) => {
 	useEffect(() => {document.title = getTitleFromURL(kindURL)}, [])
 	const [search, setSearch] = useStorageString('')
 
