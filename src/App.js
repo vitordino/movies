@@ -1,5 +1,5 @@
 import React, { Fragment, lazy, Suspense } from 'react'
-import { Router, Location } from '@reach/router'
+import { Router } from '@reach/router'
 import Navbar from 'components/Navbar'
 import Footer from 'components/Footer'
 import Loader from 'components/Loader'
