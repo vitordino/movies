@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import { useStorageString } from 'utils/storage'
 import { getTitleFromURL } from 'utils/kind'
-import Searchbar from 'components/Searchbar'
+import Search from 'components/Searchbar'
 import Container from 'components/Container'
 import Text from 'components/Text'
 import { Row } from 'components/Grid'
@@ -14,6 +14,12 @@ const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	transition: 0.2s all;
+`
+
+const Searchbar = styled(Search)`
+	position: sticky;
+	top: 1rem;
+	z-index: 3;
 `
 
 /* eslint-disable no-mixed-operators */
@@ -31,7 +37,6 @@ const SearchView = ({isSearchable = true, kindURL = 'multi'}) => {
 				<Searchbar
 					value={search}
 					onChange={e => {setSearch(e.target.value); setPage(1)}}
-					style={{top: '1rem', position: 'sticky', zIndex: 3}}
 				/>
 			)}
 			<Container>
