@@ -171,7 +171,7 @@ const Card = ({id, loading, error, loadMore, ...props}) => {
 			<AspectRatio ratio={0.75}/>
 			{!(loading || error || loadMore) && <Anchor to={`/${kindURL}/${id}`} tabIndex={0}/>}
 			<OverflowHidden>
-				{image && <Image src={`https://image.tmdb.org/t/p/w500/${image}`}/>}
+				{image && <Image src={`https://image.tmdb.org/t/p/w300/${image}`}/>}
 			</OverflowHidden>
 			{loadMore && (
 				<LoadMore xs={1} weight={500} color={p => p.theme.colors.midGrey}>Load<br/>More</LoadMore>
