@@ -52,11 +52,18 @@ const Input = styled.input`
 	}
 `
 
-const Searchbar = ({value, onChange, ...props}) => (
+const getPlaceholder = kindURL => {
+	if(kindURL === 'movies') return 'movies'
+	if(kindURL === 'tv') return 'tv'
+	if(kindURL === 'people') return 'people'
+	return 'movies, tv or people'
+}
+
+const Searchbar = ({kindURL, value, onChange, ...props}) => (
 	<Container {...props}>
 		<Wrapper>
 			<Loupe/>
-			<Input placeholder='Search movies...' autoFocus={true} value={value} onChange={onChange}/>
+			<Input placeholder={`Search ${getPlaceholder(kindURL)}...`} autoFocus={true} value={value} onChange={onChange}/>
 		</Wrapper>
 	</Container>
 )
