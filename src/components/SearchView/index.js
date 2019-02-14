@@ -10,7 +10,7 @@ import CardsByPage from './CardsByPage'
 import Info from './Info'
 
 const Wrapper = styled.div`
-	flex: 1
+	flex: 1;
 	display: flex;
 	flex-direction: column;
 	transition: 0.2s all;
@@ -18,7 +18,7 @@ const Wrapper = styled.div`
 
 const Searchbar = styled(Search)`
 	position: sticky;
-	top: 1rem;
+	top: 0.875rem;
 	z-index: 3;
 `
 

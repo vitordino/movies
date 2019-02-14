@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import above from 'utils/above'
 import Container from 'components/Container'
 
 const Wrapper = styled.label`
@@ -7,10 +8,13 @@ const Wrapper = styled.label`
 	color: ${p => p.theme.colors.lightGrey};
 	display: flex;
 	align-items: center;
-	padding: 0.75rem;
 	border-radius: 0.25rem;
 	position: relative;
 	box-shadow: 0 0 4rem 0.125rem ${p => p.theme.colors.dark};
+	padding: 0.5rem 0.625rem;
+	${above('sm')`
+		padding: 0.75rem;
+	`}
 	&:focus-within{
 		&:before{
 		content: '';
@@ -39,10 +43,13 @@ const Input = styled.input`
 	color: ${p => p.theme.colors.dark};
 	border: none;
 	background: none;
-	margin-left: 0.75rem;
 	outline: none;
 	flex: 1;
 	${p => p.theme.typography[0]};
+	margin-left: 0.375rem;
+	${above('sm')`
+		margin-left: 0.5rem;
+	`}
 	&::placeholder{
 		color: ${p => p.theme.colors.lightGrey};
 	}
