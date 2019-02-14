@@ -141,12 +141,16 @@ const LoadMore = styled(Text)`
 `
 
 const Kind = styled.div`
-	padding: 0.75rem;
+	padding: 0.75rem 0.75rem 0;
 	font-size: 0.75rem;
 	font-weight: 500;
 	text-transform: uppercase;
 	letter-spacing: 0.025rem;
-	color: transparent;
+	color: ${p => p.theme.colors.lightGrey};
+	@media (hover: hover) {
+		color: transparent;
+		padding: 0.75rem;
+	}
 	${Wrapper}:hover & {
 		color: ${p => p.theme.colors.lightGrey};
 	}
@@ -193,7 +197,7 @@ const Card = ({id, loading, error, loadMore, ...props}) => {
 							</Info>
 						)}
 						<div style={{display: 'flex', alignItems: 'center'}}>
-							<Kind style={{position: 'relative'}}>{kind}</Kind>
+							{kind && <Kind style={{position: 'relative'}}>{kind}</Kind>}
 							{id && <FavoriteButton kindURL={kindURL} id={id} />}
 						</div>
 					</Overlay>
