@@ -142,12 +142,14 @@ const LoadMore = styled(Text)`
 
 const Kind = styled.div`
 	padding: 0.75rem 0.75rem 0;
+	margin-bottom: -0.375rem;
 	font-size: 0.75rem;
 	font-weight: 500;
 	text-transform: uppercase;
 	letter-spacing: 0.025rem;
 	color: ${p => p.theme.colors.lightGrey};
 	@media (hover: hover) {
+		margin-bottom: 0;
 		color: transparent;
 		padding: 0.75rem;
 	}
@@ -192,7 +194,7 @@ const Card = ({id, loading, error, loadMore, ...props}) => {
 					<Overlay>
 						{title && (
 							<Info>
-								<Text xs={1} weight={500} style={{marginBottom: '0.25em'}}>{title}</Text>
+								<Text xs={0} sm={1} weight={500} style={{marginBottom: '0.25em'}}>{title}</Text>
 								<Text color={p => p.theme.colors.lightGrey}>{year}</Text>
 							</Info>
 						)}
