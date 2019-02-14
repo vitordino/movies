@@ -20,7 +20,7 @@ const getSecond = ({runtime, last_air_date, in_production}) => {
 
 const getHighlight = ({release_dates, number_of_seasons}) => {
 	if(release_dates) return getRating(release_dates)
-	if(number_of_seasons) return `${number_of_seasons} seasons`
+	if(number_of_seasons) return `${number_of_seasons} season${number_of_seasons > 1 ? 's' : ''}`
 	return null
 }
 
