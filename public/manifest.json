@@ -1,6 +1,6 @@
 {
   "short_name": "Movies",
-  "name": "View movie information",
+  "name": "Browse movie, tv series, actors and directors information",
   "icons": [
     {
       "src": "favicon.ico",
@@ -10,6 +10,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "theme_color": "#fff",
+  "background_color": "#0A1014"
 }
