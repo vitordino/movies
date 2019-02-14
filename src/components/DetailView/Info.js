@@ -40,7 +40,7 @@ const Info = ({kind, ...data}) => {
 					)}
 					{!!totalDirectors && (
 						<Section title={kind === 'person' ? 'Directed' : 'Directors'}>
-							{directors.map(director => <Relation key={director.id} {...director}/>)}
+							{directors.map(director => <Relation key={director.id} kind={kind} {...director}/>)}
 							{totalDirectors > 4 && (
 								<Toggle
 									more={!!sliceDirectors}
