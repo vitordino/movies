@@ -25,9 +25,9 @@ const Searchbar = styled(Search)`
 /* eslint-disable no-mixed-operators */
 const SearchView = ({isSearchable = true, kindURL = 'multi'}) => {
 	useEffect(() => {document.title = getTitleFromURL(kindURL)}, [])
-	const [search, setSearch] = useStorageString('')
+	const [search, setSearch] = useStorageString('search', '')
 
-	const [pageString, setPage] = useStorageString('1')
+	const [pageString, setPage] = useStorageString('page', '1')
 	const page = +pageString
 	const pagesArray = [...Array(page).fill(0).map((x, i) => i+1)]
 
