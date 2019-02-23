@@ -1,5 +1,6 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useEffect } from 'react'
 import { useFetch } from 'react-hooks-fetch'
+import { useInView } from 'react-intersection-observer'
 import { getKindByURL } from 'utils/kind'
 import { Cell } from 'components/Grid'
 import Card from 'components/Card'
@@ -21,8 +22,14 @@ const getDataURL = (kindURL, search, page) => {
 	])
 }
 
+const InfiniteScroll = ({page, setPage}) => {
+	useEffect(() => setPage(page + 1))
+	return null
+}
+
 const CardsByPage = ({search, page, setPage, isLastPage, kindURL}) => {
 	const { loading, data, error } = useFetch(getDataURL(kindURL, search, page).join(''))
+	const [ref, inView] = useInView()
 
 	if(error && search) return (
 		<Cell xs={12}><InfoScreen emoji='❌' title='I’m sorry Dave' description='I’m afraid i can’t do that'/></Cell>
@@ -49,6 +56,7 @@ const CardsByPage = ({search, page, setPage, isLastPage, kindURL}) => {
 			{isLastPage && totalPages && totalPages > page && (
 				<Cell xs={6} sm={4} md={3} xg={2}>
 					<Card onClick={() => setPage(page + 1)} loadMore/>
+					{page > 1 && <div ref={ref}>{inView && <InfiniteScroll page={page} setPage={setPage}/>}</div>}
 				</Cell>
 			)}
 		</Fragment>
