@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import LazyImage from 'react-lazy-progressive-image'
-import { Movie } from 'components/Icon'
+import { Movie, TV, Person } from 'components/Icon'
 import AspectRatio from 'components/AspectRatio'
 
 const fill = `position: absolute; top: 0; bottom: 0; left: 0; right: 0;`
@@ -37,7 +37,7 @@ const NoImage = styled.div`
 `
 // ? <img alt={alt} src={`https://image.tmdb.org/t/p/w500/${image}`}/>
 
-const Image = ({alt, image}) => (
+const Image = ({alt, image, kind}) => (
 	<Wrapper ratio={image ? 0.75 : 1}>
 		{image
 			? (
@@ -47,8 +47,13 @@ const Image = ({alt, image}) => (
 				>
 					{(src, loading) => <Img src={src} loading={loading}/>}
 				</LazyImage>
+			) : (
+				<NoImage>
+					{kind === 'movie' && <Movie size={96} strokeWidth={1.125}/>}
+					{kind === 'tv' && <TV size={96} strokeWidth={1.125}/>}
+					{kind === 'person' && <Person size={96} strokeWidth={1.125}/>}
+				</NoImage>
 			)
-			: <NoImage><Movie size={96} strokeWidth={1.125}/></NoImage>
 		}
 	</Wrapper>
 )

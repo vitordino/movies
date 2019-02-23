@@ -52,8 +52,9 @@ const BackLink = styled.button`
 const getDetailTitle = (kindURL, title) => `${getTitleFromURL(kindURL)} ${title ? ` ⠿ ${title}` : ''}`
 
 const DetailView = ({id, kindURL, ...props}) => {
+	const kind = getKindByURL(kindURL)
 	const { error, loading, data } = useFetch([
-		`https://api.themoviedb.org/3/${getKindByURL(kindURL)}/${id}`,
+		`https://api.themoviedb.org/3/${kind}/${id}`,
 		`?api_key=${process.env.REACT_APP_TMDB_KEY}`,
 		`&append_to_response=release_dates,external_ids,credits,content_ratings`
 	].join(''))
@@ -83,10 +84,10 @@ const DetailView = ({id, kindURL, ...props}) => {
 								)}
 								<ToggleButton kindURL={kindURL} id={id}/>
 							</div>
-							<Info kind={getKindByURL(kindURL)} {...data}/>
+							<Info kind={kind} {...data}/>
 						</Cell>
 						<Cell xs={12} sm={12} md={5} lg={5}>
-							<Image alt={`poster for: ${title}`} image={image}/>
+							<Image kind={kind} alt={`poster for: ${title}`} image={image}/>
 						</Cell>
 					</Row>
 				)}
