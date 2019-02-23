@@ -45,6 +45,7 @@ const SearchView = ({isSearchable = true, kindURL = 'multi'}) => {
 				<Row vertical-gutter style={{marginTop: '2rem', marginBottom: '2rem', position: 'relative', zIndex: kindURL !== 'featured' && 2}}>
 					{(!!search || kindURL === 'featured') && pagesArray.map(page => (
 						<CardsByPage
+							key={page}
 							search={search}
 							page={page}
 							setPage={setPage}

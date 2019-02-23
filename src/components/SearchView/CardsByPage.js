@@ -36,7 +36,7 @@ const CardsByPage = ({search, page, setPage, isLastPage, kindURL}) => {
 	)
 
 	if(loading) return (Array(20).fill(0).map((x, i) => (
-		<Cell key={i} xs={6} sm={4} md={3} xg={2}><Card loading/></Cell>
+		<Cell key={i} xs={6} sm={4} md={3} xg={2}><Card key={i} loading/></Cell>
 	)))
 
 	if(data && !data?.results?.length) return (
