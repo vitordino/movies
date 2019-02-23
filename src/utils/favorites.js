@@ -1,7 +1,8 @@
-import { createStorage } from 'utils/storage'
+import createStorage from 'context-storage'
 
 const [Provider, useStorage] = createStorage(
 	'favorites',
+	new Set(),
 	(key, value) => (key === '' && value === null)
 		? new Set()
 		: (Array.isArray(value) ? new Set(value) : value),

@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
-import { useStorageString } from 'utils/storage'
+import { useStorageString } from 'utils/useStorageString'
 import { getTitleFromURL } from 'utils/kind'
 import Search from 'components/Searchbar'
 import Container from 'components/Container'
