@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import LazyImage from 'react-lazy-progressive-image'
 import { Movie } from 'components/Icon'
 import AspectRatio from 'components/AspectRatio'
 
@@ -18,6 +19,14 @@ const Wrapper = styled(AspectRatio)`
 	}
 `
 
+const Img = styled.img`
+	display: block;
+	min-height: 100%;
+	object-fit: cover;
+	transition: 0.2s filter;
+	${p => p.loading && `filter: blur(0.5px)`}
+`
+
 const NoImage = styled.div`
 	${fill}
 	display: flex;
@@ -26,11 +35,19 @@ const NoImage = styled.div`
 	height: 100%;
 	color: ${p => p.theme.colors.midGrey};
 `
+// ? <img alt={alt} src={`https://image.tmdb.org/t/p/w500/${image}`}/>
 
 const Image = ({alt, image}) => (
 	<Wrapper ratio={image ? 0.75 : 1}>
 		{image
-			? <img alt={alt} src={`https://image.tmdb.org/t/p/w500/${image}`}/>
+			? (
+				<LazyImage
+					placeholder={`https://image.tmdb.org/t/p/w300/${image}`}
+					src={`https://image.tmdb.org/t/p/w1280/${image}`}
+				>
+					{(src, loading) => <Img src={src} loading={loading}/>}
+				</LazyImage>
+			)
 			: <NoImage><Movie size={96} strokeWidth={1.125}/></NoImage>
 		}
 	</Wrapper>

@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import LazyImage from 'react-lazy-progressive-image'
 import { useFavoriteState } from 'utils/favorites'
 import Link from 'components/Link'
 import AspectRatio from 'components/AspectRatio'
@@ -45,7 +46,10 @@ const OverflowHidden = styled(AbsoluteFill)`
 
 const Image = styled.img`
 	display: block;
+	min-height: 100%;
 	object-fit: cover;
+	transition: 0.2s all;
+	${p => p.loading && `filter: blur(2rem);`}
 `
 
 const Overlay = styled.div`
@@ -177,7 +181,14 @@ const Card = ({id, loading, error, loadMore, ...props}) => {
 			<AspectRatio ratio={0.75}/>
 			{!(loading || error || loadMore) && <Anchor to={`/${kindURL}/${id}`} tabIndex={0}/>}
 			<OverflowHidden>
-				{image && <Image src={`https://image.tmdb.org/t/p/w300/${image}`}/>}
+				{image && (
+					<LazyImage
+						placeholder={`https://image.tmdb.org/t/p/w45/${image}`}
+						src={`https://image.tmdb.org/t/p/w300/${image}`}
+					>
+						{(src, loading) => <Image src={src} loading={loading}/>}
+					</LazyImage>
+				)}
 			</OverflowHidden>
 			{loadMore && (
 				<LoadMore xs={1} weight={500} color={p => p.theme.colors.midGrey}>Load<br/>More</LoadMore>
