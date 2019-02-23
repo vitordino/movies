@@ -43,7 +43,7 @@ const SearchView = ({isSearchable = true, kindURL = 'multi'}) => {
 			<Container>
 				{(kindURL === 'featured') && <Text weight={600} xs={2} sm={3} md={4} xg={5}>Featured movies</Text>}
 				<Row vertical-gutter style={{marginTop: '2rem', marginBottom: '2rem', position: 'relative', zIndex: kindURL !== 'featured' && 2}}>
-					{(!!search && !!kindURL) && pagesArray.map(page => (
+					{(!!search || kindURL === 'featured') && pagesArray.map(page => (
 						<CardsByPage
 							search={search}
 							page={page}
