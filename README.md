@@ -54,6 +54,7 @@ $ PORT=9000 yarn dev
 | [`styled-components`](https://styled-components.com/) | [`MIT`](https://api.github.com/repos/styled-components/styled-components/license) | `css-in-js` library, composable styling |
 | [`@reach/router`](https://reach.tech/router) | [`MIT`](https://api.github.com/repos/reach/router/license) | Next Generation Routing for `react` |
 | [`rescripts`](https://github.com/harrysolovay/rescripts) | [`MIT`](https://api.github.com/repos/harrysolovay/rescripts/license) | Use the latest react-scripts with custom configurations for Babel, ESLint, TSLint, Webpack,... ∞ |
+| [`react-snap`](https://github.com/stereobooster/react-snap) | [`MIT`](https://api.github.com/repos/stereobooster/react-snap/license) | Zero-configuration framework-agnostic static prerendering for SPAs |
 
 <br/>
 

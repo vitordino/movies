@@ -22,7 +22,7 @@
   "scripts": {
     "dev": "rescripts start",
     "build": "rescripts build",
-    "postbuild": "cp build/index.html build/404.html && cp build/index.html build/200.html ",
+    "postbuild": "react-snap && cp build/index.html build/404.html && cp build/index.html build/200.html ",
     "eject": "rescripts eject"
   },
   "eslintConfig": {
@@ -44,6 +44,10 @@
     "@babel/plugin-transform-runtime": "^7.2.0",
     "@rescripts/cli": "^0.0.10",
     "@rescripts/rescript-env": "^0.0.5",
-    "babel-plugin-preval": "^3.0.1"
+    "babel-plugin-preval": "^3.0.1",
+    "@vitordino/react-snap": "^1.24.0-alpha.0"
+  },
+  "reactSnap": {
+    "exclude" : ["/featured", "/*/*"]
   }
 }
