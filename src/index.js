@@ -2,18 +2,22 @@ import React from 'react'
 import { hydrate, render } from 'react-dom'
 import 'typeface-roboto'
 import { ThemeProvider } from 'styled-components'
+import { Provider as GridProvider } from 'griding'
 import GlobalStyle from 'components/GlobalStyle'
 import * as theme from './theme'
 import App from './App'
 import { register } from 'serviceWorker'
 import { Provider as FavoritesProvider } from 'utils/favorites'
 
+
 const Wrapper = () => (
 	<ThemeProvider theme={theme}>
-		<FavoritesProvider>
-			<App/>
-			<GlobalStyle/>
-		</FavoritesProvider>
+		<GridProvider columns={theme.columns} breakpoints={theme.breakpoints}>
+			<FavoritesProvider>
+				<App/>
+				<GlobalStyle/>
+			</FavoritesProvider>
+		</GridProvider>
 	</ThemeProvider>
 )
 

@@ -1,8 +1,8 @@
 import React, { Fragment, useEffect } from 'react'
 import { useFetch } from 'react-hooks-fetch'
 import { useInView } from 'react-intersection-observer'
+import { Cell } from 'griding'
 import { getKindByURL } from 'utils/kind'
-import { Cell } from 'components/Grid'
 import Card from 'components/Card'
 import InfoScreen from 'components/InfoScreen'
 

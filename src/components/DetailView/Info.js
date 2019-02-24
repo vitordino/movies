@@ -1,5 +1,5 @@
 import React, { Fragment, useState } from 'react'
-import { Row, Cell } from 'components/Grid'
+import { Row, Cell } from 'griding'
 import Section from './Section'
 import Relation from './Relation'
 import Toggle from './Toggle'

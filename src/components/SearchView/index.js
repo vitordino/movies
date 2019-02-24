@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components'
+import { Row } from 'griding'
 import { useStorageString } from 'utils/useStorageString'
 import { getTitleFromURL } from 'utils/kind'
 import Search from 'components/Searchbar'
 import Container from 'components/Container'
 import Text from 'components/Text'
-import { Row } from 'components/Grid'
 import CardsByPage from './CardsByPage'
 import Info from './Info'
 
