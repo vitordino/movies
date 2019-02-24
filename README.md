@@ -71,5 +71,5 @@ $ PORT=9000 yarn dev
 | `yarn` |      `1.0.0` |
 
 
-[netlify-badge]: https://api.netlify.com/api/v1/badges/0f0c902d-c82b-4963-a525-ac595b05fef3/deploy-status
+[netlify-badge]: https://api.netlify.com/api/v1/badges/c4262f53-9309-4a71-81e8-31f8b3d88416/deploy-status
 [netlify-url]: https://app.netlify.com/sites/vitordino-movies/deploys
