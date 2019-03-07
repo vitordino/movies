@@ -1,6 +1,8 @@
-# Movies <sub><sup><sub>react-app for movies</sub></sup></sub>
+# Movies <sub><sup><sub>react-app for movie related search</sub></sup></sub>
 
 [![netlify status][netlify-badge]][netlify-url]
+
+[![project thumbnail](./public/og-image.png)](https://movies.vitordino.com)
 
 **This repo contains all the code for the [movies.vitordino.com](https://movies.vitordino.com) app.**
 
